@@ -1,0 +1,1 @@
+SeReNE is a lightweight, fast and extensible library for sequential recommendation systems, built with PyTorch, Polars, and ❤️.
