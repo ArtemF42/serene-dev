@@ -56,7 +56,7 @@ class SequentialDataset(Dataset):
         else:
             _slice = slice(-self.max_length, None)
 
-        example: dict[str, Any] = {self.user_key: self.users[idx]}
+        example: dict[str, Any] = {self.user_key: self.users[idx], "history": self.events[self.item_key][start:end]}
 
         for key in (self.item_key, *self.feature_keys):
             example[f"inputs.{key}"] = torch.from_numpy(self.events[key][start:end][_slice])
