@@ -14,7 +14,7 @@ from torch.utils.data import Dataset
 class SequentialDataset(Dataset):
     events: pl.DataFrame
     max_length: int
-    min_length: int = 1
+    min_length: int
     user_key: str = "user_id"
     item_key: str = "item_id"
     time_key: str = "timestamp"
