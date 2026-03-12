@@ -19,8 +19,5 @@ dependencies = [
     "torch",
 ]
 
-[tool.setuptools.packages.find]
-include = ["source"]
-
 [tool.ruff]
 line-length = 120
