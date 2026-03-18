@@ -63,7 +63,6 @@ class SASRecModel(nn.Module):
         self.activation = activation
 
         self.item_embedding = nn.Embedding(num_items, embedding_dim, padding_idx=padding_idx)
-        self.item_embedding.weight.register_hook(self._freeze_padding_embedding_hook)
 
         self.embedding_dropout = nn.Dropout(dropout_p)
         self.rotary_embedding = RotaryEmbedding(embedding_dim // num_heads)
@@ -102,7 +101,3 @@ class SASRecModel(nn.Module):
             x = block(x, self.rotary_embedding)
 
         return self.out_rms_norm(x)
-
-    def _freeze_padding_embedding_hook(self, grad: torch.Tensor) -> torch.Tensor:
-        grad[self.padding_idx] = 0.0
-        return grad
